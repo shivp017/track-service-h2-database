@@ -52,6 +52,14 @@ import java.util.Optional;
             Optional<Track> trackRemoved = Optional.of(trackService.deleteTrackById(id));
             return new ResponseEntity<>(trackRemoved, HttpStatus.OK);
         }
+
+
+    //Use PatchMapping to update the element in database
+    @PatchMapping("/Track/{id}")
+    public ResponseEntity<?> updateTrack(@RequestBody Track track, @PathVariable("id") int id) {
+        Track track1 = trackService.updateTrackById(id, track);
+        return new ResponseEntity < > (track1, HttpStatus.OK);
+    }
     }
 
 
