@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 @Entity
 public class Track {
-
+//variable declared for track id ,track name and comments
     @Id
     int id;
     String name;
@@ -43,7 +43,7 @@ public class Track {
     public void setComments(String comments) {
         this.comments = comments;
     }
-
+//to-string method
     @Override
     public String toString() {
         return "Track{" +

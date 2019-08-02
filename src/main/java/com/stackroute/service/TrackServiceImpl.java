@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+//service class
 @Service
 public class TrackServiceImpl implements TrackService {
-
+    //declared trackRepository object of TrackRepository class
     private TrackRepository trackRepository;
 
+    //autowired constructor
     @Autowired
     public TrackServiceImpl(TrackRepository trackRepository) {
         this.trackRepository = trackRepository;
@@ -23,10 +25,11 @@ public class TrackServiceImpl implements TrackService {
         return trackRepository.save(track);
     }
 
+    //implement of getTrackById() method
     @Override
     public Track getTrackById(int id) {
         Track track = trackRepository.findById(id).get();
-          return track;
+        return track;
     }
 
     //implement of getAllTracks() method
@@ -45,6 +48,7 @@ public class TrackServiceImpl implements TrackService {
         return optionalTrack.get();
 
     }
+
     //implement of updateTrackById() method
     @Override
     public Track updateTrackById(int id, Track track) {
@@ -53,9 +57,7 @@ public class TrackServiceImpl implements TrackService {
     }
 
 
-
-
-    }
+}
 
 
 

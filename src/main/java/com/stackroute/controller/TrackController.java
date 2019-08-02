@@ -19,6 +19,7 @@ import java.util.Optional;
         public TrackController(TrackService trackService) {
             this.trackService = trackService;
         }
+    //use postMapping to set tracks
         @PostMapping("Track")
         public ResponseEntity<?> setTrack(@RequestBody Track track){
             try {
@@ -29,6 +30,7 @@ import java.util.Optional;
                 return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
             }
         }
+    //use getMapping to gettracksById
         @GetMapping("Track/{id}")
         public ResponseEntity<?> getTrack(@PathVariable("id") int id) {
             ResponseEntity responseEntity;
