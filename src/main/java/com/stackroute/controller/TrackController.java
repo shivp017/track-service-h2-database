@@ -47,11 +47,7 @@ import java.util.Optional;
             return new ResponseEntity<>(trackService.getAllTracks(), HttpStatus.OK);
         }
         //Use DeleteMapping to delete a particular track given by id
-        @DeleteMapping("Track/{id}")
-        public ResponseEntity<?> deleteTrackById(@PathVariable int id) {
-            Optional<Track> trackRemoved = Optional.of(trackService.deleteTrackById(id));
-            return new ResponseEntity<>(trackRemoved, HttpStatus.OK);
-        }
+
     }
 
 
