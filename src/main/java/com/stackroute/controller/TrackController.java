@@ -23,7 +23,7 @@ import java.util.Optional;
         public ResponseEntity<?> setTrack(@RequestBody Track track){
             try {
                 trackService.saveTrack(track);
-                return new ResponseEntity<>("saveTrack", HttpStatus.OK);
+                return new ResponseEntity<>("savedTrack", HttpStatus.OK);
             }
             catch (Exception ex){
                 return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
