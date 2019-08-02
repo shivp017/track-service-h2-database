@@ -7,9 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 
 
-    @Controller
+@Controller
     @RequestMapping("/api/v1")
     public class TrackController {
         private TrackService trackService;
@@ -41,29 +42,16 @@ import org.springframework.web.bind.annotation.*;
             return responseEntity;
         }
 
-        @DeleteMapping("track")
-        public ResponseEntity<?> deleteTrackById(@PathVariable int id){
-            ResponseEntity responseEntity;
-            try {
-                trackService.deleteTrackById(id);
-                responseEntity = new ResponseEntity("delete success", HttpStatus.CREATED);
-            } catch (Exception ex) {
-                responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
-            }
-            return responseEntity;
+        @GetMapping("track")
+        public ResponseEntity<?> getAllTrack() {
+            return new ResponseEntity<>(trackService.getAllTracks(), HttpStatus.OK);
         }
-        @PostMapping("track/{id}")
-        public ResponseEntity<?> updateTrack(@PathVariable int id,@RequestBody Track track){
-            ResponseEntity responseEntity;
-            try {
-                trackService.updateTrackById(id,track);
-                responseEntity = new ResponseEntity("update created", HttpStatus.CREATED);
-            } catch (Exception ex) {
-                responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
-            }
-            return responseEntity;
+        //Use DeleteMapping to delete a particular track given by id
+        @DeleteMapping("track/{id}")
+        public ResponseEntity<?> deleteTrackById(@PathVariable int id) {
+            Optional<Track> trackRemoved = Optional.of(trackService.deleteTrackById(id));
+            return new ResponseEntity<>(trackRemoved, HttpStatus.OK);
         }
-
     }
 
 
